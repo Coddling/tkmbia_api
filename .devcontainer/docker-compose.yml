@@ -1,0 +1,39 @@
+version: '3'
+
+volumes: 
+  postgres_data:
+
+services:
+  rails_api:
+    # See https://aka.ms/vscode-remote/containers/non-root for details.
+    user: vscode
+    env_file: devcontainer.env
+    build: 
+      context: ..
+      dockerfile: .devcontainer/Dockerfile
+      args:
+        # Update 'VARIANT' to pick a Ruby version: 2, 2.7, 2.6, 2.5
+        VARIANT: 3.0.2
+        USER_UID: 1000
+        USER_GID: 1000
+        NODE_VERSION: lts/*
+    volumes:
+      - ..:/workspace:cached
+
+    # Overrides default command so things don't shut down after the process ends.
+    command: sleep infinity
+
+  db:
+    image: postgres
+    restart: unless-stopped
+    volumes: 
+      - postgres_data:/var/lib/postgresql/data
+    ports: 
+      - 5433:5432
+    environment:
+      POSTGRES_PASSWORD: LocalPassword
+
+networks: 
+  default: 
+    external: 
+      name: vessel_network 

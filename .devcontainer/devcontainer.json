@@ -1,0 +1,31 @@
+{
+    "name": "Cloud API",
+    "dockerComposeFile": "docker-compose.yml",
+    "service": "cloud_api",
+    "workspaceFolder": "/workspace",
+    // Set *default* container specific settings.json values on container create.
+    "settings": { 
+        "terminal.integrated.shell.linux": "/bin/bash"
+    },
+    "runArgs": ["--env-file",".devcontainer/devcontainer.env"],
+
+    // Add the IDs of extensions you want to be installed when the container is created.
+    "extensions": [
+		"rebornix.Ruby",
+		"hbenl.vscode-test-explorer",
+		"connorshea.vscode-ruby-test-adapter",
+		"misogi.ruby-rubocop",
+		"donjayamanne.githistory",
+		"eamodio.gitlens",
+		"mhutchie.git-graph",
+		"waderyan.gitblame",
+		"huizhou.githd",
+		"castwide.ruby-debug"
+	],
+
+    // Use 'forwardPorts' to make a list of ports inside the container available locally.
+    "forwardPorts": [3001, ],
+
+    // Uncomment to connect as a non-root user. See https://aka.ms/vscode-remote/containers/non-root.
+    "remoteUser": "vscode",
+}

@@ -3,7 +3,7 @@ module ModelHelper
     @resource = class_.find_by( "#{search_by}" => search_value)
     message = message_ || "#{class_.to_s} not found"
     exception = custom_exception_ || ExceptionHandler::NotFoundError
-    raise exception.new(message="#{class_.to_s} not found") if @resource.nil?
+    raise exception.new(message) if @resource.nil?
     return @resource
   end
 

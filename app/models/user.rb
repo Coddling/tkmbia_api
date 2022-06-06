@@ -3,6 +3,7 @@ class User < ApplicationRecord
   include RoleHelper
 
   validates_presence_of :full_name
+  validates_uniqueness_of :auth_user_id
 
   belongs_to :auth_user
 

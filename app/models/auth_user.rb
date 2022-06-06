@@ -14,6 +14,7 @@ class AuthUser < ApplicationRecord
   has_secure_password
   validates_presence_of :role
   validates_presence_of :password, on: :create
+  validates_uniqueness_of :email
 
   validates_inclusion_of :role, in: VALID_ROLES
   validates_format_of :email, :with => URI::MailTo::EMAIL_REGEXP

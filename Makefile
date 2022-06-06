@@ -142,6 +142,9 @@ logs:  ## Shows output of running containers (in 'follow' mode) [file|service|se
 stop: ## Stops containers (without removing them) [file|service|services]
 	@$(DOCKER_COMPOSE) -f "$(file)" stop $(services)
 
+migrate:
+  dotenv rails db:migrate
+
 ##
 # restart
 #
